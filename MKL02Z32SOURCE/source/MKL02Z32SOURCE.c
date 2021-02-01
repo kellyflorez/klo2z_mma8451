@@ -27,7 +27,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 /**
  * @file    MKL02Z32SOURCE.c
  * @brief   Application entry point.
@@ -39,14 +39,39 @@
 #include "clock_config.h"
 #include "MKL02Z4.h"
 #include "fsl_debug_console.h"
-/* TODO: insert other include files here. */
 
-/* TODO: insert other definitions and declarations here. */
 
-/*
- * @brief   Application entry point.
- */
+#include "sdk_hal_gpio.h"
+/*******************************************************************************
+ * Definitions
+ ******************************************************************************/
+
+
+/*******************************************************************************
+ * Private Prototypes
+ ******************************************************************************/
+
+
+/*******************************************************************************
+ * External vars
+ ******************************************************************************/
+
+
+/*******************************************************************************
+ * Local vars
+ ******************************************************************************/
+
+
+/*******************************************************************************
+ * Private Source Code
+ ******************************************************************************/
+
+
+/*******************************************************************************
+ * Public Source Code
+ ******************************************************************************/
 int main(void) {
+	status_t resultado;
 
   	/* Init board hardware. */
     BOARD_InitBootPins();
@@ -58,6 +83,13 @@ int main(void) {
 #endif
 
     PRINTF("Hello World\n");
+
+    //coloca el pin PTB7 en alto
+    resultado=gpioPutLow(KPTB7);
+
+    if(resultado!=kStatus_Success)
+    	printf("error de operacion");
+
 
     /* Force the counter to be placed into memory. */
     volatile static int i = 0 ;
